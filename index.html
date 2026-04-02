@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Design System
+  Style: Industrial Bold Typography / Bauhaus-influenced
+  Archetype: Bold Poster
+  Fonts: Bebas Neue / Source Sans 3
+  Palette: primary #880b10 | accent #e63946 | bg #0d0d0d | text #f0f0f0
+  Anti-patterns avoided: Generic dark-hero overlay, AI purple/pink gradients, hidden credentials, bare nav selector
+-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoMetrics Moses Lake | Foreign Car Expert | Moses Lake, WA</title>
+<meta name="description" content="AutoMetrics in Moses Lake, WA — your Foreign Car Expert. 433 five-star reviews. A/C repair, hybrid service, engine diagnostics, shocks, and more. Call (509) 766-2002.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://foresight-productions.github.io/fp-demo-autometrics/">
+<meta property="og:title" content="AutoMetrics Moses Lake | Foreign Car Expert · Moses Lake, WA">
+<meta property="og:description" content="Moses Lake's highest-rated auto repair shop. 433 five-star reviews. Specialists in foreign and hybrid vehicles. Call (509) 766-2002 or book online.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1200&h=630&fit=crop&auto=format">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AutoMetrics - Foreign car specialist shop in Moses Lake, WA">
+<meta property="og:site_name" content="AutoMetrics - Moses Lake">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AutoMetrics Moses Lake | Foreign Car Expert · Moses Lake, WA">
+<meta name="twitter:description" content="Moses Lake's highest-rated auto repair shop. 433 five-star reviews. Specialists in foreign and hybrid vehicles. Call (509) 766-2002.">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1200&h=630&fit=crop&auto=format">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #880b10;
+  --primary-dark: #5c070b;
+  --accent: #e63946;
+  --text: #f0f0f0;
+  --text-muted: #9ca3af;
+  --bg: #0d0d0d;
+  --bg-subtle: #161616;
+  --surface: #222222;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ===== NAV ===== */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 68px;
+  background: rgba(13,13,13,0.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(136,11,16,0.35);
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+#nav.scrolled {
+  box-shadow: 0 4px 28px rgba(0,0,0,0.6);
+  border-bottom-color: var(--primary);
+}
+.nav-logo { flex-shrink: 0; display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+.nav-logo-img { max-height: 38px; width: auto; display: block; }
+.nav-logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  color: var(--text);
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-shrink: 0;
+}
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 150ms ease;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  padding: 0.5rem 1.4rem;
+  background: var(--primary);
+  color: #fff !important;
+  border-radius: 3px;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.12em !important;
+  transition: background 150ms ease !important;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.nav-cta:hover { background: var(--accent) !important; }
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  transition: all 200ms ease;
+  border-radius: 1px;
+}
+
+/* ===== NAV OVERLAY ===== */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--bg);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.nav-overlay.open { display: flex; }
+.nav-overlay a {
+  color: var(--text);
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.75rem;
+  letter-spacing: 0.12em;
+  transition: color 150ms ease;
+}
+.nav-overlay a:hover { color: var(--accent); }
+.nav-overlay-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  font-size: 2.25rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  line-height: 1;
+  padding: 0.5rem;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== HERO — Bold Poster ===== */
+.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 5% 90px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.18) saturate(0.4);
+  z-index: 0;
+  transition: background-image 0.5s ease;
+}
+.hero-geo {
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+  opacity: 0.09;
+  z-index: 1;
+}
+.hero-geo-line {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, rgba(136,11,16,0.4), transparent);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.75rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.hero-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4.5rem, 11vw, 9rem);
+  line-height: 0.91;
+  letter-spacing: 0.025em;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.hero-headline .line-accent { color: var(--accent); }
+.hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-muted);
+  max-width: 540px;
+  margin-bottom: 2.75rem;
+  line-height: 1.75;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.1rem;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: background 200ms ease, transform 150ms ease;
+  min-height: 48px;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.1rem;
+  border: 2px solid rgba(240,240,240,0.25);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: border-color 200ms ease, color 200ms ease;
+  min-height: 48px;
+}
+.btn-outline:hover { border-color: var(--text); color: #fff; }
+.hero-divider {
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  z-index: 3;
+  height: 60px;
+}
+
+/* ===== PROOF BAR ===== */
+.proof-bar {
+  background: var(--primary);
+  padding: 1.375rem 5%;
+  position: relative;
+  z-index: 2;
+}
+.proof-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+.proof-stars { color: #fbbf24; letter-spacing: 2px; }
+.proof-sep { width: 1px; height: 28px; background: rgba(255,255,255,0.25); }
+
+/* ===== SECTION COMMONS ===== */
+section { padding: 6.5rem 5%; }
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.875rem;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.75rem, 5.5vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  margin-bottom: 1.125rem;
+}
+.section-desc {
+  font-size: 1.0625rem;
+  color: var(--text-muted);
+  max-width: 560px;
+  line-height: 1.75;
+}
+
+/* ===== SERVICES ===== */
+.services-section { background: var(--bg-subtle); }
+.services-header { margin-bottom: 3.5rem; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.service-card {
+  background: var(--surface);
+  padding: 2.25rem 2rem;
+  border-left: 4px solid var(--primary);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+  opacity: 0;
+  transform: translateY(24px);
+}
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 450ms ease, transform 450ms ease, border-color 200ms ease, box-shadow 200ms ease;
+}
+.service-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(230,57,70,0.2) inset;
+}
+.service-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+}
+.service-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.07em;
+  color: var(--text);
+  margin-bottom: 0.625rem;
+}
+.service-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ===== ABOUT ===== */
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-img-wrap { position: relative; padding-bottom: 1.5rem; }
+.about-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  border-radius: 3px;
+}
+.about-badge {
+  position: absolute;
+  bottom: 0;
+  right: -1rem;
+  background: var(--primary);
+  color: #fff;
+  padding: 1.375rem 1.75rem;
+  border-radius: 3px;
+  text-align: center;
+  box-shadow: 0 8px 36px rgba(136,11,16,0.45);
+}
+.about-badge-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.75rem;
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+.about-badge-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-top: 0.25rem;
+}
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2.25rem;
+}
+.stat-box {
+  background: var(--surface);
+  padding: 1.5rem;
+  border-radius: 3px;
+  border-top: 3px solid var(--primary);
+}
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+.trust-points { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.trust-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.trust-points li svg { flex-shrink: 0; margin-top: 2px; color: var(--accent); }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section { background: var(--bg-subtle); }
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.25rem;
+}
+.testimonial-card {
+  background: var(--surface);
+  padding: 2.25rem;
+  border-radius: 3px;
+  border-top: 3px solid var(--primary);
+  opacity: 0;
+  transform: translateY(24px);
+}
+.testimonial-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 450ms ease, transform 450ms ease;
+}
+.t-stars { color: #fbbf24; letter-spacing: 3px; margin-bottom: 1.25rem; }
+.t-quote {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+  font-style: italic;
+}
+.t-author { font-weight: 700; font-size: 0.9375rem; color: var(--text); }
+.t-location { font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+/* ===== CTA BANNER ===== */
+.cta-banner {
+  background: var(--primary);
+  padding: 5.5rem 5%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: 'AUTOMETRICS';
+  position: absolute;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(6rem, 16vw, 15rem);
+  color: rgba(255,255,255,0.04);
+  letter-spacing: 0.1em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+.cta-banner .section-title { color: #fff; }
+.cta-banner p { color: rgba(255,255,255,0.75); margin-bottom: 2.25rem; font-size: 1.125rem; }
+.cta-banner .btn-primary { background: #fff; color: var(--primary); }
+.cta-banner .btn-primary:hover { background: var(--bg); color: var(--accent); }
+
+/* ===== CONTACT ===== */
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-info { display: flex; flex-direction: column; gap: 2.25rem; }
+.contact-phone {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration: none;
+  display: block;
+  transition: color 150ms ease;
+  line-height: 1;
+}
+.contact-phone:hover { color: var(--text); }
+.contact-detail { display: flex; flex-direction: column; gap: 0.5rem; }
+.contact-detail-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.contact-detail p { color: var(--text); font-size: 1rem; line-height: 1.6; }
+.hours-list { list-style: none; display: flex; flex-direction: column; gap: 0.375rem; }
+.hours-list li { font-size: 0.9375rem; color: var(--text-muted); }
+.hours-list li strong { color: var(--text); }
+.contact-form { display: flex; flex-direction: column; gap: 1.125rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.125rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: var(--surface);
+  border: 1px solid rgba(240,240,240,0.08);
+  border-radius: 3px;
+  padding: 0.8rem 1rem;
+  color: var(--text);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 1rem;
+  transition: border-color 150ms ease;
+  min-height: 48px;
+  width: 100%;
+  appearance: auto;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { outline: none; border-color: var(--primary); }
+.form-group textarea { resize: vertical; min-height: 140px; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #080808;
+  padding: 3rem 5%;
+  border-top: 1px solid rgba(136,11,16,0.3);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.footer-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+  color: var(--text);
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 150ms ease;
+}
+.footer-links a:hover { color: var(--text); }
+.footer-copy {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  width: 100%;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(240,240,240,0.05);
+  margin-top: 1rem;
+}
+.footer-copy a { color: var(--accent); text-decoration: none; }
+
+/* ===== ANIMATIONS ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-badge { right: 0.5rem; }
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+
+  .hero { padding: 100px 1.2rem 70px; min-height: 100svh; }
+  .hero-btns { flex-direction: column; align-items: flex-start; }
+  .hero-btns .btn-primary,
+  .hero-btns .btn-outline { width: 100%; max-width: 300px; justify-content: center; }
+  .hero-geo-line { display: none; }
+
+  .proof-sep { display: none; }
+  .proof-inner { gap: 1.25rem; }
+  .proof-item { font-size: 0.875rem; }
+
+  section { padding: 4.5rem 1.2rem; }
+
+  .services-grid { grid-template-columns: 1fr; gap: 2px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+
+  .about-img-wrap { padding-bottom: 2rem; }
+  .about-badge { bottom: 0; right: 0.5rem; }
+
+  .cta-banner { padding: 3.5rem 1.2rem; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+
+@media (max-width: 400px) {
+  .about-stats { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV OVERLAY -->
+<div class="nav-overlay" id="navOverlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="nav-overlay-close" id="navClose" aria-label="Close menu">&times;</button>
+  <a href="#services" tabindex="0">Services</a>
+  <a href="#about" tabindex="0">About</a>
+  <a href="#reviews" tabindex="0">Reviews</a>
+  <a href="#contact" tabindex="0">Contact</a>
+  <a href="tel:5097662002" class="btn-primary" style="font-family:'Source Sans 3',sans-serif;font-size:1rem;">Call (509) 766-2002</a>
+</div>
+
+<!-- NAV -->
+<header id="nav" role="banner">
+  <a href="#" class="nav-logo" aria-label="AutoMetrics Moses Lake home">
+    <img
+      src="https://moseslakeautorepair.net/img/logo.webp"
+      alt="AutoMetrics Moses Lake"
+      class="nav-logo-img"
+      onerror="this.style.display='none';document.getElementById('navLogoText').style.display='block'"
+    >
+    <span class="nav-logo-text" id="navLogoText" style="display:none">AUTOMETRICS</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:5097662002" class="nav-cta">Call Now</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-bg" id="heroBg" role="presentation"></div>
+  <div class="hero-geo" role="presentation"></div>
+  <div class="hero-geo-line" role="presentation"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Moses Lake's Highest-Rated Auto Shop</div>
+    <h1 class="hero-headline">
+      Foreign<br>
+      <span class="line-accent">Car</span><br>
+      Expert.
+    </h1>
+    <p class="hero-sub">433 five-star reviews. Diagnostic precision and honest service for the vehicles most shops won't touch — import, foreign, and hybrid specialists.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book Appointment
+      </a>
+      <a href="tel:5097662002" class="btn-outline">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.09 1.18 2 2 0 012.08 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+        (509) 766-2002
+      </a>
+    </div>
+  </div>
+  <svg class="hero-divider" viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M0,40 C360,80 1080,0 1440,38 L1440,60 L0,60 Z" fill="#880b10"/>
+  </svg>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar" role="region" aria-label="Social proof">
+  <div class="proof-inner">
+    <div class="proof-item">
+      <span class="proof-stars" aria-label="5 stars">★★★★★</span>
+      <span>433 Five-Star Google Reviews</span>
+    </div>
+    <div class="proof-sep" role="separator"></div>
+    <div class="proof-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      <span>Locally Owned &amp; Operated</span>
+    </div>
+    <div class="proof-sep" role="separator"></div>
+    <div class="proof-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Mon–Fri · 7 AM – 6 PM</span>
+    </div>
+    <div class="proof-sep" role="separator"></div>
+    <div class="proof-item">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>Moses Lake, WA · Grant County</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services" aria-label="Services">
+  <div class="services-header fade-up">
+    <div class="section-label">What We Fix</div>
+    <h2 class="section-title">Expert Repairs,<br>Every System</h2>
+    <p class="section-desc">From hybrid drivetrains to climate control, we diagnose and fix it right the first time — with the tools and training most shops lack.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M9 12l2 2 4-4"/>
+        <path d="M12 6v1M12 17v1M6 12h1M17 12h1"/>
+      </svg>
+      <div class="service-name">Check Engine Diagnostics</div>
+      <p class="service-desc">Factory-level OBD equipment reads every code. We find the root cause fast — no guessing, no parts-swapping, just the right diagnosis the first time.</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M8 6h8a2 2 0 012 2v3a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"/>
+        <path d="M12 11v3"/><path d="M9 14h6"/>
+        <path d="M3 10h3M18 10h3"/>
+        <path d="M5 6l-2-2M19 6l2-2"/>
+      </svg>
+      <div class="service-name">A/C Repair &amp; Recharge</div>
+      <p class="service-desc">Compressor replacement, refrigerant recharge, and precision leak detection. We restore your A/C to factory performance — not just "good enough."</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+      </svg>
+      <div class="service-name">Hybrid Maintenance &amp; Repair</div>
+      <p class="service-desc">Prius, Camry Hybrid, Honda Insight, and more — we service the full hybrid system including battery health, inverter, and regenerative braking.</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/>
+        <rect x="9" y="11" width="14" height="10" rx="2"/>
+        <line x1="13" y1="16" x2="17" y2="16"/>
+      </svg>
+      <div class="service-name">Shocks &amp; Struts Service</div>
+      <p class="service-desc">Worn suspension affects handling, tire wear, and safety. We restore the ride quality and stability your vehicle was engineered to deliver.</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <circle cx="12" cy="12" r="2"/>
+        <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+      </svg>
+      <div class="service-name">Steering Repair</div>
+      <p class="service-desc">Power steering, rack-and-pinion, tie rods, and more — precise steering repair so every turn feels confident, stable, and controlled.</p>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+        <path d="M7 7h3v4H7zM14 7h3v2h-3zM14 12h3v2h-3z"/>
+      </svg>
+      <div class="service-name">Digital Vehicle Inspections</div>
+      <p class="service-desc">Detailed photo and video reports sent directly to your phone. See exactly what we see — fully transparent, documented, no surprises on the bill.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" aria-label="About AutoMetrics">
+  <div class="about-inner">
+    <div class="about-img-wrap fade-up">
+      <img
+        class="about-img"
+        id="aboutImg"
+        src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=800&q=80"
+        alt="Auto technician working at AutoMetrics Moses Lake"
+        loading="lazy"
+      >
+      <div class="about-badge">
+        <div class="about-badge-num">433</div>
+        <div class="about-badge-label">5-Star Reviews</div>
+      </div>
+    </div>
+    <div class="about-copy fade-up">
+      <div class="section-label">Why AutoMetrics</div>
+      <h2 class="section-title">Moses Lake's Foreign Car Specialists</h2>
+      <div class="about-stats">
+        <div class="stat-box">
+          <div class="stat-num" data-count="433">0</div>
+          <div class="stat-label">5-Star Reviews</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" data-count="100">0</div>
+          <div class="stat-label">% Satisfaction</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" data-count="20">0</div>
+          <div class="stat-label">+ Years Experience</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num" data-count="10">0</div>
+          <div class="stat-label">+ Service Types</div>
+        </div>
+      </div>
+      <ul class="trust-points">
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Specialists in foreign, import, and hybrid vehicles that other shops turn away
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Digital inspections sent to your phone — full transparency, no guesswork
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Factory-grade diagnostic equipment for first-time-right repairs
+        </li>
+        <li>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Serving Moses Lake and Grant County with honest, straightforward service
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="reviews" aria-label="Customer reviews">
+  <div class="fade-up">
+    <div class="section-label">What Customers Say</div>
+    <h2 class="section-title">433 Reviews.<br>All Five Stars.</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="t-stars" aria-label="5 stars">★★★★★</div>
+      <p class="t-quote">"They diagnosed my Prius hybrid battery issue in under an hour when two other shops said they 'don't really do hybrids.' Honest, fast, and the repair has held perfectly for 8 months now."</p>
+      <div class="t-author">Sarah K.</div>
+      <div class="t-location">Moses Lake, WA</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars" aria-label="5 stars">★★★★★</div>
+      <p class="t-quote">"Got a digital inspection with photos texted to me before they touched anything. I knew exactly what was wrong and what it would cost. My Subaru is running better than it has in three years."</p>
+      <div class="t-author">Mike T.</div>
+      <div class="t-location">Ephrata, WA</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars" aria-label="5 stars">★★★★★</div>
+      <p class="t-quote">"A/C went out on a 100-degree day. They fit me in same-day, replaced the compressor, and had me back on the road by 3pm. Price was fair and the work is rock solid. This is my shop now."</p>
+      <div class="t-author">Carlos M.</div>
+      <div class="t-location">Moses Lake North, WA</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" role="region" aria-label="Service area">
+  <div class="section-label" style="color:rgba(255,255,255,0.65);position:relative;z-index:1">Serving Grant County</div>
+  <h2 class="section-title" style="position:relative;z-index:1">Proudly Serving Moses Lake<br>and Surrounding Areas</h2>
+  <p style="position:relative;z-index:1">Moses Lake · Ephrata · Quincy · Othello · Royal City · Soap Lake</p>
+  <a href="tel:5097662002" class="btn-primary" style="position:relative;z-index:1">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.09 1.18 2 2 0 012.08 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+    Call (509) 766-2002
+  </a>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" aria-label="Contact">
+  <div class="contact-inner">
+    <div class="contact-info fade-up">
+      <div>
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Book Your<br>Appointment</h2>
+      </div>
+      <a href="tel:5097662002" class="contact-phone">(509) 766-2002</a>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Address</div>
+        <p>216 W Valley Rd<br>Moses Lake, WA 98837</p>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-label">Business Hours</div>
+        <ul class="hours-list">
+          <li><strong>Monday – Friday</strong>&nbsp;&nbsp;7:00 AM – 6:00 PM</li>
+          <li><strong>Saturday – Sunday</strong>&nbsp;&nbsp;Closed</li>
+        </ul>
+      </div>
+    </div>
+    <form class="contact-form fade-up" onsubmit="handleSubmit(event)" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" placeholder="John" autocomplete="given-name">
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" placeholder="Smith" autocomplete="family-name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="john@email.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="(509) 000-0000" autocomplete="tel">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="service">Service Needed</label>
+        <select id="service" name="service">
+          <option value="">Select a service…</option>
+          <option>Check Engine Diagnostics</option>
+          <option>A/C Repair / Recharge</option>
+          <option>Hybrid Maintenance / Repair</option>
+          <option>Shocks &amp; Struts</option>
+          <option>Steering Repair</option>
+          <option>Digital Vehicle Inspection</option>
+          <option>Clutch Repair</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us about your vehicle and what's going on…"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;font-family:'Source Sans 3',sans-serif;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">AutoMetrics · Moses Lake</div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="tel:5097662002">(509) 766-2002</a>
+    </div>
+  </div>
+  <div class="footer-copy">
+    &copy; 2025 AutoMetrics &mdash; 216 W Valley Rd, Moses Lake, WA 98837 &nbsp;&middot;&nbsp;
+    Site by <a href="https://foresight-productions.com">Foresight Productions</a>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // Nav scroll shadow
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 50);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Mobile nav
+  const navToggle = document.getElementById('navToggle');
+  const navOverlay = document.getElementById('navOverlay');
+  const navClose = document.getElementById('navClose');
+  function openNav() {
+    navOverlay.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    navOverlay.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+  navToggle.addEventListener('click', openNav);
+  navClose.addEventListener('click', closeNav);
+  navOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+  // Hero background — fetch a random auto repair photo from Unsplash
+  fetch('https://api.unsplash.com/photos/random?query=auto+repair+mechanic+workshop&orientation=landscape&client_id=X40-Lk7G_Q6Zk-Cn4jXIDNbMzfHlIfj7fdhl-J-5b58')
+    .then(r => r.json())
+    .then(d => {
+      if (d && d.urls && d.urls.full) {
+        const bg = document.getElementById('heroBg');
+        const img = new Image();
+        img.onload = () => { bg.style.backgroundImage = 'url(' + d.urls.full + ')'; };
+        img.src = d.urls.full;
+      }
+    })
+    .catch(() => {});
+
+  // About photo — fetch a mechanic/shop photo
+  fetch('https://api.unsplash.com/photos/random?query=auto+mechanic+technician&orientation=landscape&client_id=X40-Lk7G_Q6Zk-Cn4jXIDNbMzfHlIfj7fdhl-J-5b58')
+    .then(r => r.json())
+    .then(d => {
+      if (d && d.urls && d.urls.regular) {
+        document.getElementById('aboutImg').src = d.urls.regular;
+      }
+    })
+    .catch(() => {});
+
+  // IntersectionObserver — fade-up and service/testimonial cards
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-up, .service-card, .testimonial-card').forEach(el => observer.observe(el));
+
+  // Stagger service cards
+  document.querySelectorAll('.service-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 80) + 'ms';
+  });
+
+  // Count-up animation
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el = e.target;
+        const target = parseInt(el.dataset.count, 10);
+        const duration = 1400;
+        const startTime = performance.now();
+        const update = (now) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target);
+          if (progress < 1) requestAnimationFrame(update);
+        };
+        requestAnimationFrame(update);
+        countObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(el => countObserver.observe(el));
+
+  // Form submit
+  window.handleSubmit = function(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#16a34a';
+    btn.disabled = true;
+  };
+})();
+</script>
+</body>
+</html>
